@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes.js';
-import { openDb } from './configDB.js';
+
 class App {
   constructor() {
     this.server = express();

@@ -7,3 +7,9 @@
 <p>yarn add nodemon sucrase -D</p>
 <p>npm install sqlite3 --save</>
 <p>npm install sqlite --save</>
+<p>npm install --save sequelize </p>
+<p>npm install --save-dev sequelize-cli</p>
+<p>npx sequelize-cli init</p>
+<p>npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string</p>
+<p>yarn sequelize migration:create --name=create-users</p>
+<p>npx sequelize-cli db:create </p>

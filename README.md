@@ -5,8 +5,8 @@
 <p>yarn init -y</p>
 <p>yarn add express</p>
 <p>yarn add nodemon sucrase -D</p>
-<p>npm install sqlite3 --save</>
-<p>npm install sqlite --save</>
+<p>npm install sqlite3 --save</p>
+<p>npm install sqlite --save</p>
 <p>npm install --save sequelize </p>
 <p>npm install --save-dev sequelize-cli</p>
 <p>npx sequelize-cli init</p>

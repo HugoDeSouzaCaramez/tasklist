@@ -5,8 +5,6 @@ const require = createRequire(import.meta.url);
 
 const Sequelize = require('sequelize');
 const sequelize = require('./app/models/index.cjs').sequelize;
-
-const db = require('./app/models/index.cjs');
 const User = require('./app/models/user.cjs')(
   sequelize,
   Sequelize.DataTypes,

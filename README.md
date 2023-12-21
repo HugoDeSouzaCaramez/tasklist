@@ -12,4 +12,4 @@
 <p>npx sequelize-cli init</p>
 <p>npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string</p>
 <p>yarn sequelize migration:create --name=create-users</p>
-<p>npx sequelize-cli db:create </p>
+<p>yarn sequelize db:migrate</p>

@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    checkPassword(password_hash) {
+      return bcrypt.compare(password_hash, this.password_hash);
+    }
   }
   User.init(
     {

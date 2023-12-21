@@ -9,7 +9,7 @@
 <p>npm install sqlite --save</p>
 <p>npm install --save sequelize </p>
 <p>npm install --save-dev sequelize-cli</p>
-<p>npx sequelize-cli init</p>
+<p>npx sequelize-cli init   (já cria a conexão com o banco de dados models/index.js)</p>
 <p>yarn sequelize migration:create --name=create-users</p>
 <p>yarn sequelize db:migrate</p>
 <p>npx sequelize-cli model:generate --name User --attributes name:string,email:string,password_hash:string</p>

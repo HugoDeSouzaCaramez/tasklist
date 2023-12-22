@@ -1,6 +1,7 @@
 'use strict';
+
 const bcrypt = require('bcryptjs');
-const { Model } = require('sequelize');
+const { Model, Sequelize } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -13,14 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
-    checkPassword(password_hash) {
-      return bcrypt.compare(password_hash, this.password_hash);
+    checkPassword(password) {
+      return bcrypt.compare(password, this.password_hash);
     }
   }
   User.init(
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
+      password: Sequelize.VIRTUAL,
       password_hash: DataTypes.STRING,
     },
     {
@@ -29,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.addHook('beforeCreate', async (user) => {
-    if (user.password_hash) {
-      user.password_hash = await bcrypt.hash(user.password_hash, 8);
+    if (user.password) {
+      user.password_hash = await bcrypt.hash(user.password, 8);
     }
   });
 

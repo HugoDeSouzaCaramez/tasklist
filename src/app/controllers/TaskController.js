@@ -30,17 +30,57 @@ class TaskController {
     }
 
     const { task } = req.body;
-    await sequelize.query(
-      `INSERT INTO tasks (user_id, task) VALUES ('${req.userId}', '${task}');`
-    );
-    /*const tasks = await Task.create({
+    const tasks = await Task.create({
       user_id: req.userId,
       task,
-    });*/
+    });
 
     return res.status(201).json({
-      message: 'Tarefa criada com sucesso.',
+      tasks,
     });
+  }
+
+  static async update(req, res) {
+    const { task_id } = req.params;
+
+    const task = await Task.findByPk(task_id);
+
+    if (!task) {
+      return res.status(400).json({ error: 'Tarefa não existe.' });
+    }
+
+    if (task.user_id !== req.userId) {
+      return res.status(401).json({ error: 'Requisição não autorizada.' });
+    }
+
+    await task.update(req.body);
+
+    return res.status(201).json(task);
+  }
+
+  static async delete(req, res) {
+    const { task_id } = req.params;
+
+    const task = await Task.findByPk(task_id);
+
+    console.log('task: ' + task);
+
+    if (!task) {
+      return res.status(400).json({ error: 'Tarefa não existe.' });
+    }
+
+    if (task.user_id !== req.userId) {
+      return res.status(401).json({ error: 'Requisição não autorizada.' });
+    }
+
+    task
+      .destroy()
+      .then((result) => res.sendStatus(204))
+      .catch((error) => {
+        res
+          .status(412)
+          .json({ message: 'Houve um erro. A tarefa não pôde ser deletada' });
+      });
   }
 }
 

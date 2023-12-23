@@ -10,17 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.User, { foreignKey: 'user_id' });
-    }
-
-    /*Task.belongsTo(models.user, {
+      this.belongsTo(models.User, {
         foreignKey: 'user_id',
-        targetKey: 'id',
-      });*/
+      });
+    }
   }
 
   Task.init(
     {
+      user_id: DataTypes.INTEGER,
       task: DataTypes.STRING,
       check: DataTypes.BOOLEAN,
     },

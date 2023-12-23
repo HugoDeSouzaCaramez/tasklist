@@ -27,4 +27,12 @@ routes.get('/tasks', function (req, res) {
   TaskController.index(req, res);
 });
 
+routes.put('/tasks/:task_id', function (req, res) {
+  TaskController.update(req, res);
+});
+
+routes.delete('/tasks/:task_id', function (req, res) {
+  TaskController.delete(req, res);
+});
+
 export default routes;

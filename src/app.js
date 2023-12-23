@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import routes from './routes.js';
 
 //import './app/models/index.js';
@@ -11,6 +12,7 @@ class App {
   }
 
   meddlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 
